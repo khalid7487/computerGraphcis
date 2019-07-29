@@ -29,7 +29,7 @@ void drawline(int x0,int y0,int x1,int y1)
 int main()
 {
     int gdriver=DETECT, gmode, error, x0, y0, x1, y1;
-    initgraph(&gdriver, &gmode, "c:\\turboc3\\bgi");
+    initgraph(&gdriver, &gmode, "c:\\TC\\BGI");
     printf("Enter co-ordinates of first point:  ");
     scanf("%d%d",&x0,&y0);
     printf("Enter co-ordinates of second point:  ");
