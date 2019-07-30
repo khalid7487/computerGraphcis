@@ -162,6 +162,109 @@ void drawline2(int x1,int y1,int x2,int y2)
 
 
 }
+void drawline3(int x1,int y1,int x2,int y2)
+{
+    int x,a, y,  Dx, Dy, twoDx, twoDy, twoDyDx, p, end;
+    if(x1==x2)
+    {
+        x=x1;
+
+        y=y1;
+
+        while(y!=y2)
+
+        {
+
+            if((y2-y1)>0)
+
+                ++y;
+
+            else
+
+                -y;
+
+            putpixel(x,y,WHITE);
+
+        }
+
+        if(y1>=y2)
+
+        {
+
+            x=x2;
+
+            y=y2;
+
+            end=y2;
+
+        }
+    }
+    if(x1<x2)
+
+    {
+        x=x1;
+
+        y=y1;
+
+        end=x2;
+
+    }
+
+    else
+
+    {
+
+        x=x2;
+
+        y=y2;
+
+        end=x1;
+
+    }
+
+    putpixel(x,y,WHITE);
+
+    Dx=abs(x1-x2);
+
+    Dy=abs(y1-y2);
+
+    twoDy=2*Dy;
+
+    twoDyDx=2*(Dy-Dx);
+
+    p=2*Dy-Dx;
+
+    while(x<end)
+
+    {
+
+        if(p<0)
+
+        {
+
+            x++;
+
+            p+=twoDy;
+
+        }
+
+        else
+
+        {
+
+            x++;
+
+            y++;
+
+            p=twoDyDx;
+
+        }
+
+        putpixel(x,y,WHITE);
+
+    }
+
+}
 int main()
 {
     int x,x1,x2,y,y1,y2,choice;
@@ -180,7 +283,7 @@ int main()
         if(choice==1)
         {
             printf("Enter triangle coordinates:");
-            scanf("%d%d%d%d%d%d\n",&x,&y,&x1,&y1,&x2,&y2);
+            scanf("%d%d%d%d%d%d",&x,&y,&x1,&y1,&x2,&y2);
             drawline(x,y,x1,y1);
             drawline(x1,y1,x2,y2);
             drawline(x2,y2,x,y);
@@ -197,6 +300,15 @@ int main()
         }
         else if(choice==3)
         {
+            printf("Enter triangle coordinates:");
+            scanf("%d%d%d%d%d%d",&x,&y,&x1,&y1,&x2,&y2);
+            drawline(x,y,x1,y1);
+            drawline(x1,y1,x2,y2);
+            drawline(x2,y2,x,y);
+
+        }
+        else if(choice==4)
+        {
             printf("Enter Rectangle coordinates:");
             scanf("%d%d%d%d",&x1,&y1,&x2,&y2);
             drawline1(x1,y1,x2,y1);
@@ -204,10 +316,6 @@ int main()
             drawline1(x1,y2,x2,y2);
             drawline1(x2,y1,x2,y2);
 
-        }
-        else if(choice==4)
-        {
-            printf("4");
 
         }
         else
