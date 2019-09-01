@@ -1,7 +1,7 @@
 
 #include<stdio.h>
 #include<graphics.h>
-int graDriver=DETECT,graMode;
+int gd=DETECT,gm;
 int n,xs[100],ys[100],i;
 int tempYaxis,tempXaxis;
 
@@ -42,7 +42,7 @@ printf("Enter co-rdinates: x,y for each point ");
 for(i=0;i<n;i++)
  scanf("%d%d",&xs[i],&ys[i]);
 
-initgraph(&graDriver,&graMode,"C:\\TURBOC3\\BGI\\");
+initgraph(&gd,&gm,"C:\\TC\\BGI\\");
 setcolor(RED);
 DrawFn();//original
 FlipV();

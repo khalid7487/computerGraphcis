@@ -28,6 +28,7 @@ int main()
         putpixel(x,y,RED);
         x+=dx;
         y+=dy;
+
     }
     getch();
     closegraph();

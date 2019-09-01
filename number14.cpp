@@ -162,106 +162,28 @@ void drawline2(int x1,int y1,int x2,int y2)
 
 
 }
-void drawline3(int x1,int y1,int x2,int y2)
+void drawline3(int x0,int y0,int x1,int y1)
 {
-    int x,a, y,  Dx, Dy, twoDx, twoDy, twoDyDx, p, end;
-    if(x1==x2)
+    int dx,dy,p,x,y;
+    dx=x1-x0;
+    dy=y1-y0;
+    x=x0;
+    y=y0;
+    p=2*dy-dx;
+    while(y<y1)
     {
-        x=x1;
-
-        y=y1;
-
-        while(y!=y2)
-
+        if(p>=0)
         {
-
-            if((y2-y1)>0)
-
-                ++y;
-
-            else
-
-                -y;
-
             putpixel(x,y,WHITE);
-
+            y+=1;
+            p+=2*dy-2*dx;
         }
-
-        if(y1>=y2)
-
-        {
-
-            x=x2;
-
-            y=y2;
-
-            end=y2;
-
-        }
-    }
-    if(x1<x2)
-
-    {
-        x=x1;
-
-        y=y1;
-
-        end=x2;
-
-    }
-
-    else
-
-    {
-
-        x=x2;
-
-        y=y2;
-
-        end=x1;
-
-    }
-
-    putpixel(x,y,WHITE);
-
-    Dx=abs(x1-x2);
-
-    Dy=abs(y1-y2);
-
-    twoDy=2*Dy;
-
-    twoDyDx=2*(Dy-Dx);
-
-    p=2*Dy-Dx;
-
-    while(x<end)
-
-    {
-
-        if(p<0)
-
-        {
-
-            x++;
-
-            p+=twoDy;
-
-        }
-
         else
-
         {
-
-            x++;
-
-            y++;
-
-            p=twoDyDx;
-
+            putpixel(x,y,WHITE);
+            p+=2*dy;
         }
-
-        putpixel(x,y,WHITE);
-
+        x+=1;
     }
 
 }
@@ -302,9 +224,9 @@ int main()
         {
             printf("Enter triangle coordinates:");
             scanf("%d%d%d%d%d%d",&x,&y,&x1,&y1,&x2,&y2);
-            drawline(x,y,x1,y1);
-            drawline(x1,y1,x2,y2);
-            drawline(x2,y2,x,y);
+            drawline3(x,y,x1,y1);
+            drawline3(x1,y1,x2,y2);
+            drawline3(x2,y2,x,y);
 
         }
         else if(choice==4)
